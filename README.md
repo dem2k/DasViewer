@@ -1,3 +1,3 @@
 # DasViewer
 
-Kann DAS Dateien öffnene und anzeigen.
+Kann DAS Dateien öffnen und anzeigen.
