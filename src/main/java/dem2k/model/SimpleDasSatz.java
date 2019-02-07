@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.TreeMap;
 
 /**
@@ -33,7 +34,6 @@ public class SimpleDasSatz {
 
 	private String satzArtS = FILL.substring(0, 2);
 	private String uSatzArtS = FILL.substring(0, 2);
-
 	private String bundStNr = FILL.substring(0, 18);
 	private String aufgS = FILL.substring(0, 2);
 	private String tAufgS = FILL.substring(0, 2);
@@ -162,7 +162,7 @@ public class SimpleDasSatz {
 		rumpVarS = satz.substring(185, 189);
 		rumpfVarAnz = satz.substring(189, 192);
 
-		String varTeil = satz.substring(KOPF_LEN, satz.length());
+		String varTeil = satz.substring(KOPF_LEN);
 		variablerTeil.addAll(SimpleDasTeil.parse(varTeil));
 
 		satzArtEnum = DasSatzArt.getByKeys(datArtS, pos160bis161, spezS);
@@ -173,16 +173,26 @@ public class SimpleDasSatz {
 		int iSachber = Integer.parseInt(sachBerS);
 		SimpleStxt result = new SimpleStxt(x1s, iAufgs, iSachber);
 
-		Long iUSB = Long.parseLong(uSachBer);
-		if (iUSB == 0L) {
-			for (SimpleDasTeil kz009 : variablerTeil) {
-				if ("009".equals(kz009.getKz())) {
-					result = result.untersachbereich(kz009.getWertNumerisch());
-				}
-			}
-		} else {
+		long iUSB = Long.parseLong(uSachBer);
+		if (iUSB > 0L) {
 			result = result.untersachbereich(iUSB);
+		} else {
+			result = getUsachBerFromKz009(result);
 		}
+		return result;
+	}
+
+	private SimpleStxt getUsachBerFromKz009(SimpleStxt result) {
+		Optional<SimpleDasTeil> firstKz009 = variablerTeil.stream()
+				.filter(e -> "009".equals(e.getKz())).findFirst();
+		if (firstKz009.isPresent()) {
+			return result.untersachbereich(firstKz009.get().getWertNumerisch());
+		}
+//		for (SimpleDasTeil teil : variablerTeil) {
+//			if ("009".equals(teil.getKz())) {
+//				return result.untersachbereich(teil.getWertNumerisch());
+//			}
+//		}
 		return result;
 	}
 
