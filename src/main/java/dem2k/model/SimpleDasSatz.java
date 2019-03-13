@@ -164,7 +164,6 @@ public class SimpleDasSatz {
 
 		String varTeil = satz.substring(KOPF_LEN);
 		variablerTeil.addAll(SimpleDasTeil.parse(varTeil));
-
 		satzArtEnum = DasSatzArt.getByKeys(datArtS, pos160bis161, spezS);
 	}
 
