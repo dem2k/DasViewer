@@ -25,7 +25,9 @@ public enum DbNames {
 
 	UstGrundangaben("25592"), LstGrundangaben("26092"),
 
-	UstGrundangabenANW("25515"), LstGrundangabenANW("26015");
+	UstGrundangabenANW("25515"), LstGrundangabenANW("26015"),
+	
+	Sachkonten("20592");
 
 	private String stxt;
 
