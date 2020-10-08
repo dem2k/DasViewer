@@ -23,10 +23,8 @@ public class DasTreeItemCellFactory {
 			}
 		};
 
-		cell.setOnMouseClicked(event -> {
-			fxTreeView.getSelectionModel().getSelectedItem()
-					.setExpanded(!fxTreeView.getSelectionModel().getSelectedItem().isExpanded());
-		});
+		cell.setOnMouseClicked(event -> fxTreeView.getSelectionModel().getSelectedItem()
+				.setExpanded(!fxTreeView.getSelectionModel().getSelectedItem().isExpanded()));
 
 		return cell;
 	}

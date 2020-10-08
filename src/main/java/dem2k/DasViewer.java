@@ -32,8 +32,6 @@ public class DasViewer extends Application {
 		Pane root = loader.load();
 		DasViewerController mainController = loader.getController();
 
-		mainController.setKzBox(new KzBoxView(stage));
-
 		stage.setTitle("DAS Viewer");
 		stage.setScene(new Scene(root));
 		stage.show();

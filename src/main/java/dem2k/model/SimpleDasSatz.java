@@ -286,14 +286,14 @@ public class SimpleDasSatz {
 		return sb.toString();
 	}
 
-	public List<String> asOriginPieces() {
-		List<String> result = new ArrayList<>();
-		result.add(origin.substring(0, KOPF_LEN));
+	public List<DasTeilfeld> asOriginPieces() {
+		List<DasTeilfeld> result = new ArrayList<>();
+		//result.add(origin.substring(0, KOPF_LEN));
 
 		String varTeil = origin.substring(KOPF_LEN);
 		for (int i = 0; i < varTeil.length() / VARTEIL_LEN; i++) {
 			int pos = i * VARTEIL_LEN;
-			result.add(varTeil.substring(pos, pos + VARTEIL_LEN));
+			result.add(new DasTeilfeld(varTeil.substring(pos, pos + VARTEIL_LEN)));
 		}
 		return result;
 	}
@@ -301,7 +301,6 @@ public class SimpleDasSatz {
 	public List<SimpleDasTeil> getVariablerTeil() {
 		return variablerTeil;
 	}
-
 
 	public DasSatzArt getSatzArt() {
 		return satzArtEnum;

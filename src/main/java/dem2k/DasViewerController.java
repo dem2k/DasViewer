@@ -3,6 +3,7 @@ package dem2k;
 import java.io.File;
 import java.io.IOException;
 
+import dem2k.model.DasTeilfeld;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckMenuItem;
@@ -24,7 +25,7 @@ public class DasViewerController {
 	public CheckMenuItem fxShowUnknown;
 
 	@FXML
-	private ListView<String> fxListView;
+	private ListView<DasTeilfeld> fxListView;
 
 	@FXML
 	private TreeView<DasTreeItem> fxTreeView;
@@ -32,7 +33,6 @@ public class DasViewerController {
 	@FXML
 	private ProgressBar fxProgressBar;
 
-	private KzBoxView kzBox;
 	private DasTreeController treeContoller;
 	private DasListController listController;
 
@@ -49,14 +49,6 @@ public class DasViewerController {
 			listController = new DasListController(fxListView, fxHeaderTable, this);
 		}
 		return listController;
-	}
-
-	public KzBoxView getKzBox() {
-		return kzBox;
-	}
-
-	public void setKzBox(KzBoxView kzBox) {
-		this.kzBox = kzBox;
 	}
 
 	@FXML
