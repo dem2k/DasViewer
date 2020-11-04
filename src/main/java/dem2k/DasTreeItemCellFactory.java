@@ -8,24 +8,24 @@ import javafx.scene.control.TreeView;
  */
 public class DasTreeItemCellFactory {
 
-	public static TreeCell<DasTreeItem> create(TreeView<DasTreeItem> fxTreeView) {
+    public static TreeCell<DasTreeItem> create(TreeView<DasTreeItem> fxTreeView) {
 
-		TreeCell<DasTreeItem> cell = new TreeCell<DasTreeItem>() {
-			@Override
-			protected void updateItem(DasTreeItem item, boolean empty) {
-				super.updateItem(item, empty);
+        TreeCell<DasTreeItem> cell = new TreeCell<DasTreeItem>() {
+            @Override
+            protected void updateItem(DasTreeItem item, boolean empty) {
+                super.updateItem(item, empty);
 
-				if (empty) {
-					setText(null);
-				} else {
-					setText(item.getText());
-				}
-			}
-		};
+                if (empty) {
+                    setText(null);
+                } else {
+                    setText(item.getText());
+                }
+            }
+        };
 
-		cell.setOnMouseClicked(event -> fxTreeView.getSelectionModel().getSelectedItem()
-				.setExpanded(!fxTreeView.getSelectionModel().getSelectedItem().isExpanded()));
+        cell.setOnMouseClicked(event -> fxTreeView.getSelectionModel().getSelectedItem()
+                .setExpanded(!fxTreeView.getSelectionModel().getSelectedItem().isExpanded()));
 
-		return cell;
-	}
+        return cell;
+    }
 }

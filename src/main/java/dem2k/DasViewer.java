@@ -13,32 +13,32 @@ import javafx.stage.Stage;
  */
 public class DasViewer extends Application {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
 //		if (args.length < 1) {
 //			System.out.println("USAGE: java " + DasViewer.class.getName() + " <DasFile>");
 //			System.exit(1);
 //		}
 
-		launch(args);
-	}
+        launch(args);
+    }
 
-	@Override
-	public void start(Stage stage) throws Exception {
+    @Override
+    public void start(Stage stage) throws Exception {
 
-		List<String> args = getParameters().getRaw();
+        List<String> args = getParameters().getRaw();
 
-		FXMLLoader loader = new FXMLLoader(DasViewer.class.getResource("/layout.fxml"));
-		Pane root = loader.load();
-		DasViewerController mainController = loader.getController();
+        FXMLLoader loader = new FXMLLoader(DasViewer.class.getResource("/layout.fxml"));
+        Pane root = loader.load();
+        DasViewerController mainController = loader.getController();
 
-		stage.setTitle("DAS Viewer");
-		stage.setScene(new Scene(root));
-		stage.show();
+        stage.setTitle("DAS Viewer");
+        stage.setScene(new Scene(root));
+        stage.show();
 
-		if (args != null && !args.isEmpty()) {
-			mainController.getTreeContoller().loadFile(args.get(0));
-		}
+        if (args != null && !args.isEmpty()) {
+            mainController.getTreeContoller().loadFile(args.get(0));
+        }
 
-	}
+    }
 }

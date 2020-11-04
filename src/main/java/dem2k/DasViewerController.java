@@ -18,56 +18,56 @@ import javafx.stage.FileChooser;
  */
 public class DasViewerController {
 
-	@FXML
-	public TableView fxHeaderTable;
+    @FXML
+    public TableView fxHeaderTable;
 
-	@FXML
-	public CheckMenuItem fxShowUnknown;
+    @FXML
+    public CheckMenuItem fxShowUnknown;
 
-	@FXML
-	private ListView<DasTeilfeld> fxListView;
+    @FXML
+    private ListView<DasTeilfeld> fxListView;
 
-	@FXML
-	private TreeView<DasTreeItem> fxTreeView;
+    @FXML
+    private TreeView<DasTreeItem> fxTreeView;
 
-	@FXML
-	private ProgressBar fxProgressBar;
+    @FXML
+    private ProgressBar fxProgressBar;
 
-	private DasTreeController treeContoller;
-	private DasListController listController;
+    private DasTreeController treeContoller;
+    private DasListController listController;
 
 
-	public DasTreeController getTreeContoller() {
-		if (treeContoller == null) {
-			treeContoller = new DasTreeController(fxTreeView, fxProgressBar, fxShowUnknown, this);
-		}
-		return treeContoller;
-	}
+    public DasTreeController getTreeContoller() {
+        if (treeContoller == null) {
+            treeContoller = new DasTreeController(fxTreeView, fxProgressBar, fxShowUnknown, this);
+        }
+        return treeContoller;
+    }
 
-	public DasListController getListController() {
-		if (listController == null) {
-			listController = new DasListController(fxListView, fxHeaderTable, this);
-		}
-		return listController;
-	}
+    public DasListController getListController() {
+        if (listController == null) {
+            listController = new DasListController(fxListView, fxHeaderTable, this);
+        }
+        return listController;
+    }
 
-	@FXML
-	public void onShowUnknown(ActionEvent actionEvent) {
-		getTreeContoller().fillTreeView();
-	}
+    @FXML
+    public void onShowUnknown(ActionEvent actionEvent) {
+        getTreeContoller().fillTreeView();
+    }
 
-	@FXML
-	public void onOpenFile(ActionEvent actionEvent) {
-		FileChooser fileChooser = new FileChooser();
-		File file = fileChooser.showOpenDialog(null);
-		if (file != null) {
-			try {
-				getTreeContoller().loadFile(file.getAbsolutePath());
-			}
-			catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+    @FXML
+    public void onOpenFile(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        File file = fileChooser.showOpenDialog(null);
+        if (file != null) {
+            try {
+                getTreeContoller().loadFile(file.getAbsolutePath());
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
-	}
+    }
 }

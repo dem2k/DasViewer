@@ -70,7 +70,7 @@ public class DasListController {
             @Override
             protected void updateItem(DasTeilfeld item, boolean empty) {
                 super.updateItem(item, empty);
-                if (item == null||empty) {
+                if (item == null || empty) {
                     setText(null);
                     setTooltip(null);
                 } else {

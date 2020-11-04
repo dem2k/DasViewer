@@ -67,7 +67,7 @@ public class SimpleDasTeil implements Serializable {
 
         if ((varTeil.length() % TF_LEN) != 0) {
             throw new IllegalArgumentException(
-                    "Variabler Teil muss jeweils "+TF_LEN+" Zeichen enthalten, (VarTeil.Length="+varTeil.length()+")." +
+                    "Variabler Teil muss jeweils " + TF_LEN + " Zeichen enthalten, (VarTeil.Length=" + varTeil.length() + ")." +
                             " Stimmt das Encoding ISO-8859-15?" +
                             " VARTEIL=[" + varTeil + "]");
         }

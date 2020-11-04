@@ -9,39 +9,39 @@ import dem2k.model.SimpleStxt;
  */
 public class DasTreeItem {
 
-	private String text;
+    private String text;
 
-	private SimpleDasSatz dasSatz;
+    private SimpleDasSatz dasSatz;
 
-	private boolean isUnknown = false;
+    private boolean isUnknown = false;
 
-	public DasTreeItem(String text) {
-		this.text = text;
-	}
+    public DasTreeItem(String text) {
+        this.text = text;
+    }
 
-	public DasTreeItem(SimpleDasSatz dasSatz) {
-		this.dasSatz = dasSatz;
-		SimpleStxt stxt = dasSatz.getSchluesseltext();
+    public DasTreeItem(SimpleDasSatz dasSatz) {
+        this.dasSatz = dasSatz;
+        SimpleStxt stxt = dasSatz.getSchluesseltext();
 
-		DbNames dbName = DbNames.getForName(stxt);
-		if (dbName == null) {
-			text = "Unknown (" + stxt.toString() + ")";
-		} else {
-			text = dbName + " (" + stxt.toString() + ") ";
-		}
+        DbNames dbName = DbNames.getForName(stxt);
+        if (dbName == null) {
+            text = "Unknown (" + stxt.toString() + ")";
+        } else {
+            text = dbName + " (" + stxt.toString() + ") ";
+        }
 
-		isUnknown = dbName == null;
-	}
+        isUnknown = dbName == null;
+    }
 
-	public String getText() {
-		return text;
-	}
+    public String getText() {
+        return text;
+    }
 
-	public SimpleDasSatz getDasSatz() {
-		return dasSatz;
-	}
+    public SimpleDasSatz getDasSatz() {
+        return dasSatz;
+    }
 
-	public boolean isUnknown() {
-		return isUnknown;
-	}
+    public boolean isUnknown() {
+        return isUnknown;
+    }
 }
