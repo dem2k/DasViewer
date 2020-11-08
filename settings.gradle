@@ -15,4 +15,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'DasViewer'
+rootProject.name = 'das-viewer'
