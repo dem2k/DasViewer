@@ -106,7 +106,7 @@ public class SimpleStxt implements Serializable, Comparable<SimpleStxt> {
     }
 
     public String getUsbAsString() {
-        return uSachBer == null ? "" : ".usb" + uSachBer;
+        return uSachBer == null ? "" : ".usb" + String.format("%015d",uSachBer);
     }
 
     public String format5stelligMitPunkten() {
