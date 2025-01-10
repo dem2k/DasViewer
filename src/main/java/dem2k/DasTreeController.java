@@ -45,7 +45,7 @@ public class DasTreeController {
     }
 
     public void loadFile(String dasFile) throws IOException {
-        fxTreeView.setRoot(new TreeItem<>(new DasTreeItem("Steuernummer")));
+        fxTreeView.setRoot(new TreeItem<>(new DasTreeItem(Paths.get(dasFile).getFileName().toString())));
         Task task = new Task() {
             @Override
             protected void failed() {
@@ -60,7 +60,6 @@ public class DasTreeController {
                 long total = Files.size(Paths.get(dasFile));
                 stnrList = getLinesFromFile(dasFile)
                         .parallel()
-                        //.peek(ln-> System.out.print("."))
                         .peek(ln -> updateProgress(done.addAndGet(ln.length()), total))
                         .map(SimpleDasSatz::new)
                         .collect(Collectors.groupingBy(DasTreeController::clearstnr));
