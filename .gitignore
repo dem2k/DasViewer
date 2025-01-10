@@ -10,7 +10,10 @@ hs_err_pid*
 /.gradle
 /.idea
 /build
+/target
 /out
-/.idea/DasViewer.iml
 /TEST2.DAS
 /my-*
+.project
+/.jdtls
+/.settings

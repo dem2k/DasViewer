@@ -27,7 +27,9 @@ public enum DbNames {
 
     UstGrundangabenANW("25515"), LstGrundangabenANW("26015"),
 
-    Sachkonten("20592"), KennbuchstabeSteuerwertBetriebsvermoegen("24101");
+    Sachkonten("20592"), KennbuchstabeSteuerwertBetriebsvermoegen("24101"),
+
+    DBKennbuchstabeSonstigeEinzelsteuer("28501")    ;
 
     private String stxt;
 

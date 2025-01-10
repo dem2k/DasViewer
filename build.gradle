@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.11'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
 }
 
 repositories {
@@ -25,4 +25,11 @@ javafx {
 task copyDependencies(type: Copy) {
   from configurations.default
   into 'build/libs'
+}
+
+
+task runDasViewer(type: JavaExec) {
+  main = mainClassName
+  classpath = sourceSets.main.runtimeClasspath
+  jvmArgs = [ '--module-path=..\\lib', '--add-modules=javafx.controls,javafx.fxml' ]
 }
